@@ -1,3 +1,19 @@
+// MENÚ HAMBURGUESA
+const hamburger = document.querySelector(".hamburger");
+const navbar = document.querySelector(".navbar");
+
+if (hamburger && navbar) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navbar.classList.toggle("active");
+  });
+}
+
+
+
+
+
+// CHARACTERS
 const contenedor = document.getElementById("lista-personajes");
 
 fetch("https://rickandmortyapi.com/api/character")

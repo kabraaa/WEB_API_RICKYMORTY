@@ -1,7 +1,172 @@
+/* MENÚ */
+.menu {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  width: 100%;
+  z-index: 1000;
+
+  /* Fondo con desenfoque */
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.menu h1 {
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.menu h1,
+.menu .logo-link {
+  position: relative;
+  z-index: 1200;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar .tickets-link {
+  background-color: red;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.navbar .tickets-link:hover {
+  background-color: white;
+  color: red;
+  transform: scale(1);
+}
+
+.navbar {
+  display: flex;
+  gap: 80px;
+  transition: all 0.4s ease;
+  right: 20px;
+  z-index: 1000;
+}
+
+.navbar .ative {
+  pointer-events: auto;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.navbar a:hover {
+  transform: scale(1.2);
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+
+/* MENÚ HAMBURGUESA */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: var(--menu-icon);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 850px) {
+  .navbar {
+    position: absolute;
+    top: 90px;
+    right: 5px;
+    background: var(--menu-bg);
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    gap: 25px;
+    padding: 30px 0;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  .navbar a {
+    color: var(--menu-text);
+  }
+
+  .navbar a:hover,
+  .navbar a.active-link {
+    color: var(--accent-color);
+  }
+
+  .navbar.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+}
+
+.navbar a.active-link {
+  color: red;
+  font-weight: bold;
+  position: relative;
+}
+
+.navbar a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: red;
+}
+
+
+
+
+
+/* CHARACTERS */
 #lista-personajes {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
-    gap: 20px;
+    gap: 50px;
 }
 
 .personaje {
