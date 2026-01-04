@@ -1,3 +1,30 @@
+body {
+  margin-top: 120px;
+  padding: 0;
+  background-color: black;
+  color: white; /* para que el texto se vea */
+
+  /* background pickles */
+  background-color: black;
+  background-image: url(../media/pickle-rick.png);
+  background-repeat: repeat;
+  background-size: 120px;
+  animation: cascada 5s linear infinite;
+}
+
+@keyframes cascada {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 120px;
+  }
+}
+
+
+
+
+
 /* MENÚ */
 .menu {
   position: fixed;
@@ -5,20 +32,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 0px 30px;
   width: 100%;
   z-index: 1000;
- box-sizing: border-box;
+  box-sizing: border-box;
 
   /* Fondo con desenfoque */
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
 
 .menu h1 {
   font-size: 30px;
   letter-spacing: 1px;
-  color: black;
+  color: rgb(7, 206, 0);
 }
 
 .menu h1,
@@ -30,7 +57,7 @@
 }
 
 .navbar .tickets-link {
-  background-color: red;
+  background-color: rgb(7, 206, 0);
   color: white;
   transition: background-color 0.3s ease, transform 0.3s ease;
   padding: 0.5rem;
@@ -57,7 +84,7 @@
 
 .navbar a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   transition: all 0.3s ease;
   font-weight: bold;
   padding: 0.5rem;
@@ -65,7 +92,7 @@
 
 .navbar a:hover {
   transform: scale(1.2);
-  color: red;
+  color: rgb(0, 158, 0);
   font-weight: bold;
 }
 
@@ -88,7 +115,7 @@
   height: 3px;
   width: 100%;
   background: black;
-  border-radius: 2px;
+  border-radius: 10px;
   transition: all 0.3s ease;
 }
 
@@ -97,7 +124,7 @@
     position: absolute;
     top: 90px;
     right: 5px;
-    background: black;
+    background: white;
     flex-direction: column;
     align-items: center;
     width: 200px;
@@ -194,6 +221,3 @@
 .personaje:hover .nombre {
     opacity: 1;
 }
-
-
-
