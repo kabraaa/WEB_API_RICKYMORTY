@@ -2,7 +2,7 @@ body {
   margin-top: 120px;
   padding: 0;
   background-color: black;
-  color: white; /* para que el texto se vea */
+  color: white;
 
   /* background pickles */
   background-color: black;
@@ -114,7 +114,7 @@ body {
 .hamburger span {
   height: 3px;
   width: 100%;
-  background: black;
+  background: white;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -185,6 +185,29 @@ body {
   height: 2px;
   background: red;
 }
+
+
+
+
+/* HOME */
+#inicio {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+#inicio h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: white;
+  text-shadow:
+    0 0 10px rgb(17, 204, 0),
+    0 0 30px rgba(0, 255, 156, 0.4);
+}
+
 
 
 
