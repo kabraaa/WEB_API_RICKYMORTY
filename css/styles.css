@@ -1,3 +1,21 @@
+h1 {
+  font-family: "strelka", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "madcap", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+p, a {
+  font-family: "poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 body {
   margin-top: 100px;
   padding: 0;
@@ -58,6 +76,7 @@ body {
   padding: 0px 30px;
   width: 100%;
   box-sizing: border-box;
+  z-index: 10000;
 
   /* Fondo con desenfoque */
   background-color: rgba(0, 0, 0, 0.7);
@@ -251,6 +270,7 @@ body {
 .intro-text h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 .intro-text p {
@@ -291,7 +311,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(9, 255, 0, 0.6);
+  background: rgba(9, 255, 0, 0.5);
   color: white;
   border: none;
   font-size: 1rem;
@@ -310,7 +330,7 @@ body {
 }
 
 .arrow:hover {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgb(9, 225, 0);
 }
 
 @media (max-width: 1000px) {
