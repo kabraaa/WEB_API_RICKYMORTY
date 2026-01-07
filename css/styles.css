@@ -17,49 +17,12 @@ p, a {
 }
 
 body {
-  margin-top: 100px;
+  margin: 0;
   padding: 0;
   background-color: rgb(20, 20, 20);
   color: white;
 }
 
-/* Background pickles */
-#inicio {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#inicio::before {
-  content: "";
-  position: absolute;
-  inset: -200px;
-
-  background-image: url("../media/pickle-rick.png");
-  background-repeat: repeat;
-  background-size: 120px 120px;
-
-  animation: cascada 12s linear infinite;
-  transform: rotate(15deg);
-  opacity: 0.5;
-
-  z-index: -1;
-}
-
-@keyframes cascada {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 120px;
-  }
-}
 
 
 
@@ -232,14 +195,47 @@ body {
 
 
 /* HOME */
+/* Background pickles */
 #inicio {
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
+  padding-top: 100px;
+
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 1;
+}
+
+#inicio::before {
+  content: "";
+  position: absolute;
+  inset: -200px;
+
+  background-image: url("../media/pickle-rick.png");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+
+  animation: cascada 12s linear infinite;
+  transform: rotate(15deg);
+  opacity: 0.5;
+
+  z-index: -1;
+}
+
+@keyframes cascada {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 120px;
+  }
 }
 
 #inicio h1 {
@@ -351,33 +347,70 @@ body {
 
 
 /* CHARACTERS */
+#personajes {
+  margin: 100px auto;
+  padding: 0 40px;
+  max-width: 1400px;
+}
+
+#personajes h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+#personajes p {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0.8;
+}
+
 #lista-personajes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
-    gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 50px;
 }
 
 .personaje {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 .personaje img {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: 
+    filter 0.4s ease,
+    transform 0.4s ease;
 }
 
+/* TEXTO */
 .nombre {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    text-align: center;
-    opacity: 0;
-    transition: 0.3s;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* HOVER */
+.personaje:hover img {
+  filter: saturate(1.8) blur(3px);
+  transform: scale(1.05);
 }
 
 .personaje:hover .nombre {
-    opacity: 1;
+  opacity: 1;
 }
