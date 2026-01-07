@@ -5,46 +5,6 @@ body {
   color: white;
 }
 
-/* Background pickles */
-#inicio {
-  min-height: calc(100vh - 100px);
-  padding-top: 100px;
-
-  position: relative;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-
-#inicio::before {
-  content: "";
-  position: absolute;
-  inset: -200px;
-
-  background-image: url("../media/pickle-rick.png");
-  background-repeat: repeat;
-  background-size: 120px 120px;
-
-  animation: cascada 12s linear infinite;
-  transform: rotate(15deg);
-  opacity: 0.5;
-
-  z-index: -1;
-}
-
-@keyframes cascada {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 120px;
-  }
-}
 
 
 
@@ -217,14 +177,47 @@ body {
 
 
 /* HOME */
+/* Background pickles */
 #inicio {
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
+  padding-top: 100px;
+
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 1;
+}
+
+#inicio::before {
+  content: "";
+  position: absolute;
+  inset: -200px;
+
+  background-image: url("../media/pickle-rick.png");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+
+  animation: cascada 12s linear infinite;
+  transform: rotate(15deg);
+  opacity: 0.5;
+
+  z-index: -1;
+}
+
+@keyframes cascada {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 120px;
+  }
 }
 
 #inicio h1 {
@@ -336,7 +329,7 @@ body {
 
 /* CHARACTERS */
 #personajes {
-  margin: 80px auto;
+  margin: 100px auto;
   padding: 0 40px;
   max-width: 1400px;
 }
