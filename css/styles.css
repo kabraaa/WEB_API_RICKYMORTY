@@ -466,6 +466,24 @@ body {
   line-height: 1.6;
 }
 
+
+/*rotacion*/ 
+
+.footer-left .footer-img {
+    animation: rotate 20s linear infinite;
+    transform-origin: center; /* Asegura que gire sobre su propio centro */
+}
+
+/* Definición de la animación */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* ----- Redes sociales ----- */
 .social-icons {
   display: flex;
