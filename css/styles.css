@@ -1,7 +1,7 @@
 body {
   margin-top: 100px;
   padding: 0;
-  background-color: black;
+  background-color: rgb(20, 20, 20);
   color: white;
 }
 
@@ -51,12 +51,12 @@ body {
 .menu {
   position: fixed;
   top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 30px;
   width: 100%;
-  z-index: 1000;
   box-sizing: border-box;
 
   /* Fondo con desenfoque */
@@ -234,9 +234,10 @@ body {
 .intro-block {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 60px;
-  padding: 100px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
 }
 
 .intro-block.reverse {
@@ -259,42 +260,60 @@ body {
 
 .slideshow {
   position: relative;
-  flex: 1;
+  width: 100%;
   max-width: 500px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
-.slide img {
+.slides {
+  position: relative;
   width: 100%;
-  border-radius: 12px;
-  display: none;
+  height: 100%;
+}
+
+.slides img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .slides img.active {
-  display: block;
+  opacity: 1;
 }
 
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(9, 255, 0, 0.6);
   color: white;
   border: none;
-  font-size: 30px;
-  padding: 10px 15px;
+  font-size: 1rem;
+  padding: 2px 8px;
   cursor: pointer;
+  z-index: 10;
   border-radius: 50%;
 }
 
 .arrow.prev {
-  left: 10px;
+  left: 15px;
 }
 
 .arrow.next {
-  right: 10px;
+  right: 15px;
 }
 
-@media (max-width: 900px) {
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 1000px) {
   .intro-block,
   .intro-block.reverse {
     flex-direction: column;
@@ -303,7 +322,7 @@ body {
   }
 
   .slideshow {
-    max-width: 100%;
+    max-width: 75%;
   }
 }
 
