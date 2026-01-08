@@ -447,7 +447,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 9vw;
+  padding: 0.01rem 9vw;
   flex-wrap: wrap;
 }
 
@@ -459,7 +459,7 @@ html, body {
 
 /* Imagen */
 .footer-img {
-  width: 26rem;  
+  width: 18rem;  
   height: auto;
 }
 
@@ -511,7 +511,7 @@ html, body {
 
 /* ----- Textos ----- */
 .footer p {
-  margin: 3.2rem 0;
+  margin: 1.4rem 0;
 }
 
 .footer a {
@@ -720,4 +720,47 @@ html, body {
   opacity: 0.85;
   line-height: 1.4;
   text-align: left;   /* 🔑 FORZADO */
+}
+
+
+
+/* CURIOSITIES */
+/* ============================= */
+
+
+.curiosities-title {
+  margin-top: 180px;  
+  margin-bottom: 100px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.curiosities-title h1 {
+  font-family: "strelka", sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: white;
+
+  text-shadow:
+    0 0 8px rgb(7, 206, 0),
+    0 0 20px rgba(0, 255, 0, 0.35);
+}
+
+#curiosities {
+  padding-bottom: 120px;
+}
+
+/* Ajuste imágenes curiosities */
+#curiosities .slideshow {
+  max-width: 500px;
+}
+
+#curiosities .slideshow img {
+  border-radius: 15px;
+}
+
+/* Pequeño refuerzo visual en títulos */
+#curiosities h2 {
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
