@@ -21,7 +21,13 @@ body {
   padding: 0;
   background-color: rgb(20, 20, 20);
   color: white;
+  touch-action: pan-y;
 }
+
+html, body {
+  overscroll-behavior-x: none;
+}
+
 
 
 
@@ -572,7 +578,6 @@ body {
 
 
 
-
 /* EPIOSODES */
 #episodes-section {
   font-family: "madcap", sans-serif;
@@ -590,66 +595,63 @@ body {
 
 #episodes-section p {
   font-family: "poppins", sans-serif;
-  text-align: center;
   margin-bottom: 60px;
   opacity: 0.8;
+  text-align: center;
 }
 
 
 /* BARRA DE BÚSQUEDA */
 .search-container {
-    display: flex;
-    width: 100%;
-    max-width: 100%;
-    margin: 20px 0;
+  display: flex;
+  width: 100%;
+  margin: 20px 0 50px;
 }
 
 .search-container input {
-    flex: 1;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-right: none;
-    border-radius: 8px 0 0 8px;
-    outline: none;
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
 }
 
 .search-container button {
-    padding: 12px 16px;
-    background-color: rgb(7, 206, 0);
-    color: white;
-    border: 2px solid rgb(7, 206, 0);
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-}
-
-.search-container button i {
-    font-size: 16px;
+  padding: 12px 16px;
+  background-color: rgb(7, 206, 0);
+  color: white;
+  border: 2px solid rgb(7, 206, 0);
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
 }
 
 .search-container button:hover {
-    background-color: #45a049;
-    border: 2px solid #45a049;
+  background-color: #45a049;
+  border-color: #45a049;
 }
 
 
-
+/* TEMPORADAS */
 .season-block {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .season-block h3 {
   font-size: 1.8rem;
   color: rgb(7, 206, 0);
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   padding-left: 10px;
 }
 
+
+/* MARQUESINA */
 .season-marquee {
   display: flex;
+  gap: 20px;
   overflow-x: auto;
-  gap: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   scroll-behavior: smooth;
 }
 
@@ -662,56 +664,60 @@ body {
   border-radius: 4px;
 }
 
+
+/* EPISODIO */
 .episode {
-  flex: 0 0 350px;   /* ancho fijo */
-  min-width: 350px;
-  height: 320px;     /* más alto para dar verticalidad */
+  flex: 0 0 360px;
+  min-width: 360px;
+  min-height: 360px; /* 🔑 clave: crece si el texto lo necesita */
   background: rgba(0,0,0,0.5);
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  transition: background 0.3s ease; /* quitamos transform scale */
+  transition: background 0.3s ease;
 }
 
 .episode:hover {
-  background: rgba(0,255,0,0.2); /* solo cambio de color al pasar el ratón */
+  background: rgba(0,255,0,0.2);
 }
 
+
+/* IMAGEN */
 .episode img {
-  width: calc(100% - 20px);  /* margen interno consistente */
-  height: 180px;             /* imagen más grande */
+  width: calc(100% - 24px);
+  height: 200px;
+  margin: 12px;
   object-fit: cover;
-  margin: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
+
+/* INFO */
 .episode-info {
-  padding: 10px 10px;
-  flex: 1;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* para que el texto quede arriba */
-  overflow: hidden;            /* evita que el texto se salga */
+  gap: 8px;
+  text-align: left;
 }
 
+
+/* TÍTULO */
 .episode-info h4 {
   font-family: "poppins", sans-serif;
-  margin: 0 0 5px 0;
+  margin: 0;
   font-size: 1rem;
   color: rgb(7, 206, 0);
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; /* evita que el texto se rompa en varias líneas */
+  line-height: 1.35;
+  word-break: break-word;
 }
 
-.episode-info p {
+
+/* DESCRIPCIÓN */
+#episodes-section .episode-info p {
   margin: 0;
   font-size: 0.9rem;
   opacity: 0.85;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; /* evita desbordamiento horizontal */
+  line-height: 1.4;
+  text-align: left;   /* 🔑 FORZADO */
 }

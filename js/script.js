@@ -1,5 +1,8 @@
 
 
+
+
+
 // MENÚ HAMBURGUESA
 const hamburger = document.querySelector(".hamburger");
 const navbar = document.querySelector(".navbar");
@@ -91,6 +94,7 @@ cargarPersonajes();
 
 
 
+// CONTENEDOR DE EPISODIOS
 const episodesContainer = document.createElement("div");
 episodesContainer.id = "episodes-list";
 document.querySelector("#episodes-section").appendChild(episodesContainer);
@@ -100,7 +104,71 @@ const searchBtn = document.getElementById("search-btn");
 
 let episodes = [];
 
-// Cargar todos los episodios
+// Imágenes generales (opcional, se usarán si no tienes una específica)
+const generalImages = [
+  "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+  "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+  "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+  "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+];
+
+// Mapeo de episodios a tus imágenes personalizadas
+const customImages = {
+  "S01E01": "media/episodios/1.webp",
+  "S01E02": "media/episodios/2.webp",
+  "S01E03": "media/episodios/3.webp",
+  "S01E04": "media/episodios/4.webp",
+  "S01E05": "media/episodios/5.webp",
+  "S01E06": "media/episodios/6.webp",
+  "S01E07": "media/episodios/7.webp",
+  "S01E08": "media/episodios/8.webp",
+  "S01E09": "media/episodios/9.webp",
+  "S01E10": "media/episodios/10.webp",
+  "S01E11": "media/episodios/11.webp",
+  "S02E01": "media/episodios/12.webp",
+  "S02E02": "media/episodios/13.webp",
+  "S02E03": "media/episodios/14.webp",
+  "S02E04": "media/episodios/15.webp",
+  "S02E05": "media/episodios/16.webp",
+  "S02E06": "media/episodios/17.webp",
+  "S02E07": "media/episodios/18.webp",
+  "S02E08": "media/episodios/19.webp",
+  "S02E09": "media/episodios/20.webp",
+  "S02E10": "media/episodios/21.webp",
+  "S03E01": "media/episodios/22.webp",
+  "S03E02": "media/episodios/23.webp",
+  "S03E03": "media/episodios/24.webp",
+  "S03E04": "media/episodios/25.webp",
+  "S03E05": "media/episodios/26.webp",
+  "S03E06": "media/episodios/27.webp",
+  "S03E07": "media/episodios/28.webp",
+  "S03E08": "media/episodios/29.webp",
+  "S03E09": "media/episodios/30.webp",
+  "S03E10": "media/episodios/31.webp",
+  "S03E11": "media/episodios/32.webp",
+  "S03E12": "media/episodios/33.webp",
+  "S03E13": "media/episodios/34.webp",
+  "S04E01": "media/episodios/35.webp",
+  "S04E02": "media/episodios/36.webp",
+  "S04E03": "media/episodios/37.webp",
+  "S04E04": "media/episodios/38.webp",
+  "S04E05": "media/episodios/39.webp",
+  "S04E06": "media/episodios/40.webp",
+  "S04E07": "media/episodios/41.webp",
+  "S04E08": "media/episodios/42.webp",
+  "S04E09": "media/episodios/43.webp",
+  "S04E10": "media/episodios/44.webp",
+  "S04E11": "media/episodios/45.webp",
+  "S05E01": "media/episodios/46.webp",
+  "S05E02": "media/episodios/47.webp",
+  "S05E03": "media/episodios/48.webp",
+  "S05E04": "media/episodios/49.webp",
+  "S05E05": "media/episodios/50.webp",
+  "S05E06": "media/episodios/51.webp"
+};
+
+// CARGAR TODOS LOS EPISODIOS
 async function loadEpisodes() {
   let page = 1;
   let hasNext = true;
@@ -113,31 +181,25 @@ async function loadEpisodes() {
     hasNext = data.info.next !== null;
   }
 
-  // Añadir imagen de ejemplo por episodio
-  // Usaremos una imagen fija o la del primer personaje si existe
-  for (let ep of episodes) {
-    if (ep.characters && ep.characters.length > 0) {
-      try {
-        const charRes = await fetch(ep.characters[0]);
-        const charData = await charRes.json();
-        ep.image = charData.image;
-      } catch {
-        ep.image = "https://via.placeholder.com/300x170?text=Episode";
-      }
+  // ASIGNAR IMAGENES PERSONALIZADAS O GENERALES
+  episodes.forEach(ep => {
+    if (customImages[ep.episode]) {
+      ep.image = customImages[ep.episode]; // tu imagen específica
     } else {
-      ep.image = "https://via.placeholder.com/300x170?text=Episode";
+      const randomIndex = Math.floor(Math.random() * generalImages.length);
+      ep.image = generalImages[randomIndex]; // fallback general
     }
-  }
+  });
 
   renderEpisodesBySeason(episodes);
 }
 
-// Renderizar por temporada con marquesina
+// RENDERIZAR EPISODIOS POR TEMPORADA
 function renderEpisodesBySeason(list) {
   const seasons = {};
 
   list.forEach(ep => {
-    const seasonNum = ep.episode.slice(1, 3);
+    const seasonNum = parseInt(ep.episode.match(/\d+/)[0]); // extrae número de temporada
     if (!seasons[seasonNum]) seasons[seasonNum] = [];
     seasons[seasonNum].push(ep);
   });
@@ -149,7 +211,7 @@ function renderEpisodesBySeason(list) {
     seasonDiv.classList.add("season-block");
 
     const title = document.createElement("h3");
-    title.textContent = `Temporada ${parseInt(seasonNum)}`;
+    title.textContent = `Temporada ${seasonNum}`;
     seasonDiv.appendChild(title);
 
     const marquee = document.createElement("div");
@@ -173,19 +235,36 @@ function renderEpisodesBySeason(list) {
   });
 }
 
-// Función de búsqueda
+// BÚSQUEDA DE EPISODIOS
 function searchEpisodes() {
   const query = searchInput.value.toLowerCase();
   const filtered = episodes.filter(ep => ep.name.toLowerCase().includes(query));
   renderEpisodesBySeason(filtered);
 }
 
-// Eventos
+// EVENTOS
 searchBtn.addEventListener("click", searchEpisodes);
 searchInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter") searchEpisodes();
 });
 
+// INICIAR CARGA
 loadEpisodes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
