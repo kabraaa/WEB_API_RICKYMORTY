@@ -94,7 +94,7 @@ cargarPersonajes();
 
 
 
-// CONTENEDOR DE EPISODIOS
+// EPISODIOS
 const episodesContainer = document.createElement("div");
 episodesContainer.id = "episodes-list";
 document.querySelector("#episodes-section").appendChild(episodesContainer);
@@ -115,6 +115,7 @@ const generalImages = [
 
 // Mapeo de episodios a tus imágenes personalizadas
 const customImages = {
+  // Temporada 1 (11 episodios)
   "S01E01": "media/episodios/1.webp",
   "S01E02": "media/episodios/2.webp",
   "S01E03": "media/episodios/3.webp",
@@ -126,6 +127,8 @@ const customImages = {
   "S01E09": "media/episodios/9.webp",
   "S01E10": "media/episodios/10.webp",
   "S01E11": "media/episodios/11.webp",
+
+  // Temporada 2 (10 episodios)
   "S02E01": "media/episodios/12.webp",
   "S02E02": "media/episodios/13.webp",
   "S02E03": "media/episodios/14.webp",
@@ -136,6 +139,8 @@ const customImages = {
   "S02E08": "media/episodios/19.webp",
   "S02E09": "media/episodios/20.webp",
   "S02E10": "media/episodios/21.webp",
+
+  // Temporada 3 (10 episodios)
   "S03E01": "media/episodios/22.webp",
   "S03E02": "media/episodios/23.webp",
   "S03E03": "media/episodios/24.webp",
@@ -146,26 +151,30 @@ const customImages = {
   "S03E08": "media/episodios/29.webp",
   "S03E09": "media/episodios/30.webp",
   "S03E10": "media/episodios/31.webp",
-  "S03E11": "media/episodios/32.webp",
-  "S03E12": "media/episodios/33.webp",
-  "S03E13": "media/episodios/34.webp",
-  "S04E01": "media/episodios/35.webp",
-  "S04E02": "media/episodios/36.webp",
-  "S04E03": "media/episodios/37.webp",
-  "S04E04": "media/episodios/38.webp",
-  "S04E05": "media/episodios/39.webp",
-  "S04E06": "media/episodios/40.webp",
-  "S04E07": "media/episodios/41.webp",
-  "S04E08": "media/episodios/42.webp",
-  "S04E09": "media/episodios/43.webp",
-  "S04E10": "media/episodios/44.webp",
-  "S04E11": "media/episodios/45.webp",
-  "S05E01": "media/episodios/46.webp",
-  "S05E02": "media/episodios/47.webp",
-  "S05E03": "media/episodios/48.webp",
-  "S05E04": "media/episodios/49.webp",
-  "S05E05": "media/episodios/50.webp",
-  "S05E06": "media/episodios/51.webp"
+
+  // Temporada 4 (10 episodios)
+  "S04E01": "media/episodios/32.webp",
+  "S04E02": "media/episodios/33.webp",
+  "S04E03": "media/episodios/34.webp",
+  "S04E04": "media/episodios/35.webp",
+  "S04E05": "media/episodios/36.webp",
+  "S04E06": "media/episodios/37.webp",
+  "S04E07": "media/episodios/38.webp",
+  "S04E08": "media/episodios/39.webp",
+  "S04E09": "media/episodios/40.webp",
+  "S04E10": "media/episodios/41.webp",
+
+  // Temporada 5 (10 episodios)
+  "S05E01": "media/episodios/42.webp",
+  "S05E02": "media/episodios/43.webp",
+  "S05E03": "media/episodios/44.webp",
+  "S05E04": "media/episodios/45.webp",
+  "S05E05": "media/episodios/46.webp",
+  "S05E06": "media/episodios/47.webp",
+  "S05E07": "media/episodios/48.webp",
+  "S05E08": "media/episodios/49.webp",
+  "S05E09": "media/episodios/50.webp",
+  "S05E10": "media/episodios/51.webp"
 };
 
 // CARGAR TODOS LOS EPISODIOS
