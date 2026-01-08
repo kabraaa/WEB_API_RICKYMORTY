@@ -447,7 +447,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 9vw;
+  padding: 1rem 9vw;
   flex-wrap: wrap;
 }
 
