@@ -466,7 +466,6 @@ body {
   line-height: 1.6;
 }
 
-
 /*rotacion*/ 
 
 .footer-left .footer-img {
@@ -546,7 +545,6 @@ body {
   border-top: 0.5px solid rgba(80, 79, 79, 0.3);
   padding-top: 2rem;
 }
-
 
 @media (max-width: 768px) {
   .footer-content {
