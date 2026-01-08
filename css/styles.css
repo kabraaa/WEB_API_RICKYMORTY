@@ -470,7 +470,7 @@ body {
 
 .footer-left .footer-img {
     animation: rotate 20s linear infinite;
-    transform-origin: center; /* Asegura que gire sobre su propio centro */
+    transform-origin: center; 
 }
 
 /* Definición de la animación */
