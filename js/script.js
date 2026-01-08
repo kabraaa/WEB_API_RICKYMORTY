@@ -48,22 +48,39 @@ document.querySelectorAll("[data-slider]").forEach(slider => {
 
 
 // CHARACTERS
+// CHARACTERS
 const contenedor = document.getElementById("lista-personajes");
 
-fetch("https://rickandmortyapi.com/api/character")
-  .then(response => response.json())
-  .then(data => {
+let personajesCargados = 0;
+let pagina = 1;
+const MAX_PERSONAJES = 50;
 
-    data.results.forEach(personaje => {
+function cargarPersonajes() {
+  fetch(`https://rickandmortyapi.com/api/character?page=${pagina}`)
+    .then(response => response.json())
+    .then(data => {
 
-      const div = document.createElement("div");
-      div.classList.add("personaje");
+      data.results.forEach(personaje => {
+        if (personajesCargados >= MAX_PERSONAJES) return;
 
-      div.innerHTML = `
-        <img src="${personaje.image}" alt="${personaje.name}">
-        <div class="nombre">${personaje.name}</div>
-      `;
+        const div = document.createElement("div");
+        div.classList.add("personaje");
 
-      contenedor.appendChild(div);
+        div.innerHTML = `
+          <img src="${personaje.image}" alt="${personaje.name}">
+          <div class="nombre">${personaje.name}</div>
+        `;
+
+        contenedor.appendChild(div);
+        personajesCargados++;
+      });
+
+      // Si aún no llegamos a 50, cargamos la siguiente página
+      if (personajesCargados < MAX_PERSONAJES && data.info.next) {
+        pagina++;
+        cargarPersonajes();
+      }
     });
-  });
+}
+
+cargarPersonajes();

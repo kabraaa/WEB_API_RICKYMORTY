@@ -382,6 +382,7 @@ body {
 
 /* TEXTO */
 .nombre {
+  font-family: "poppins", sans-serif;
   position: absolute;
   inset: 0;
   display: flex;
