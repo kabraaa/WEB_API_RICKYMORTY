@@ -738,7 +738,7 @@ html, body {
 
 
 .curiosities-title {
-  margin-top: 150px;  
+  margin-top: 120px;  
   margin-bottom: 100px;
   text-align: center;
   padding: 0 20px;
@@ -775,4 +775,60 @@ html, body {
 
 #curiosities .slideshow:hover img {
   transform: scale(1.05);
+}
+
+/* VIDEOS SECTION */
+#curiosities .videos-section {
+  margin: 120px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+#curiosities .videos-section h2 {
+  margin-bottom: 50px;
+  text-shadow: 0 0 25px rgba(21, 255, 0, 0.6);
+}
+
+/* GRID */
+#curiosities .videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* VIDEO BOX */
+#curiosities .video-item {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+#curiosities .video-item iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 15px;
+}
+
+#curiosities .video-item {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#curiosities .video-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#curiosities .video-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(21, 255, 0, 0.4);
 }
