@@ -71,6 +71,8 @@ function cargarPersonajes() {
         const div = document.createElement("div");
         div.classList.add("personaje");
 
+        div.dataset.id = personaje.id;
+
         div.innerHTML = `
           <img src="${personaje.image}" alt="${personaje.name}">
           <div class="nombre">${personaje.name}</div>
@@ -91,6 +93,63 @@ function cargarPersonajes() {
 cargarPersonajes();
 
 
+// ===============================
+// MODAL PERSONAJES (NO INTERFIERE)
+// ===============================
+
+const modalOverlay = document.getElementById("modal-overlay");
+if (modalOverlay) {
+
+  const modalImg = document.getElementById("modal-img");
+  const modalName = document.getElementById("modal-name");
+  const modalId = document.getElementById("modal-id");
+  const modalStatus = document.getElementById("modal-status");
+  const modalSpecies = document.getElementById("modal-species");
+  const modalGender = document.getElementById("modal-gender");
+  const modalOrigin = document.getElementById("modal-origin");
+  const modalLocation = document.getElementById("modal-location");
+  const modalClose = document.querySelector(".modal-close");
+
+  // 👉 Delegación SOLO sobre personajes
+  contenedor.addEventListener("click", (e) => {
+    const card = e.target.closest(".personaje");
+    if (!card) return;
+
+    const id = card.dataset.id;
+    if (!id) return;
+
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(res => res.json())
+      .then(p => {
+        modalImg.src = p.image;
+        modalName.textContent = p.name;
+        modalId.textContent = p.id;
+        modalStatus.textContent = p.status;
+        modalSpecies.textContent = p.species;
+        modalGender.textContent = p.gender;
+        modalOrigin.textContent = p.origin.name;
+        modalLocation.textContent = p.location.name;
+
+        modalOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+  });
+
+  function cerrarModal() {
+    modalOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  modalClose.addEventListener("click", cerrarModal);
+
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) cerrarModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") cerrarModal();
+  });
+}
 
 
 
