@@ -726,10 +726,43 @@ html, body {
 #episodes-section .episode-info p {
   margin: 0;
   font-size: 0.9rem;
-  opacity: 0.85;
   line-height: 1.4;
-  text-align: left;   /* 🔑 FORZADO */
+  text-align: left; 
 }
+
+
+#search-results {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0;
+  z-index: 1000; 
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.search-option {
+  font-family: "poppins", sans-serif;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  color: #000; /* Texto negro normal */
+  font-weight: normal; /* Sin negrita */
+}
+
+.search-option:hover {
+  background-color: #00c853; /* Hover verde */
+  color: #fff; /* Texto blanco al pasar el mouse */
+  font-weight: 500;
+}
+
+
 
 
 

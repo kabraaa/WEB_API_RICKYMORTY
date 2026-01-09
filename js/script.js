@@ -326,26 +326,105 @@ const customImages = {
   }
 
   // ===============================
-  // BÚSQUEDA
-  // ===============================
-  function searchEpisodes() {
-    const query = searchInput.value.toLowerCase();
-    const filtered = episodes.filter(ep =>
-      ep.name.toLowerCase().includes(query) ||
-      ep.episode.toLowerCase().includes(query)
-    );
-    renderEpisodesBySeason(filtered);
+// BÚSQUEDA DE EPISODIOS
+// ===============================
+const searchResults = document.createElement("div");
+searchResults.id = "search-results";
+searchInput.parentNode.style.position = "relative";
+searchInput.parentNode.appendChild(searchResults);
+
+// Función principal de búsqueda (Enter o botón)
+function searchEpisodes() {
+  const query = searchInput.value.toLowerCase();
+  const filtered = episodes.filter(ep =>
+    ep.name.toLowerCase().includes(query) ||
+    ep.episode.toLowerCase().includes(query)
+  );
+
+  renderEpisodesBySeason(filtered);
+}
+
+searchBtn.addEventListener("click", searchEpisodes);
+searchInput.addEventListener("keyup", e => {
+  if (e.key === "Enter") searchEpisodes();
+});
+
+// Búsqueda en tiempo real con dropdown ordenado cronológicamente
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+
+  if (query === "") {
+    searchResults.style.display = "none";
+    return;
   }
 
-  searchBtn.addEventListener("click", searchEpisodes);
-  searchInput.addEventListener("keyup", e => {
-    if (e.key === "Enter") searchEpisodes();
+  const filtered = episodes
+    .filter(ep => ep.name.toLowerCase().includes(query) || ep.episode.toLowerCase().includes(query))
+    .sort((a, b) => {
+      const [sA, eA] = a.episode.substring(1).split("E").map(Number);
+      const [sB, eB] = b.episode.substring(1).split("E").map(Number);
+      return sA !== sB ? sA - sB : eA - eB;
+    });
+
+  if (filtered.length === 0) {
+    searchResults.style.display = "none";
+    return;
+  }
+
+  filtered.forEach(ep => {
+    const option = document.createElement("div");
+    option.classList.add("search-option");
+    option.textContent = `${ep.episode} - ${ep.name}`;
+
+    option.addEventListener("click", () => {
+      // Mostrar resultado exactamente como al presionar Enter
+      searchInput.value = ep.name;
+      searchEpisodes();
+
+      // Limpiar dropdown
+      searchResults.style.display = "none";
+
+      // Botón para volver a todos los episodios
+      const backBtn = document.createElement("button");
+      backBtn.textContent = "Volver a todos los episodios";
+      backBtn.style.marginTop = "20px";
+      backBtn.style.padding = "10px 15px";
+      backBtn.style.backgroundColor = "rgb(7, 206, 0)";
+      backBtn.style.color = "#fff";
+      backBtn.style.border = "none";
+      backBtn.style.borderRadius = "6px";
+      backBtn.style.cursor = "pointer";
+
+      backBtn.addEventListener("click", () => {
+        renderEpisodesBySeason(episodes);
+      });
+
+      episodesContainer.appendChild(backBtn);
+    });
+
+    searchResults.appendChild(option);
   });
+
+  searchResults.style.display = "block";
+});
+
+// Ocultar dropdown al hacer clic fuera
+document.addEventListener("click", (e) => {
+  if (!searchInput.parentNode.contains(e.target)) {
+    searchResults.style.display = "none";
+  }
+});
+
+
+
 
   // ===============================
   // INICIAR
   // ===============================
   loadEpisodes();
+
+
 
 
 
