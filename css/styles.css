@@ -267,11 +267,9 @@ html, body {
 }
 
 .intro-text h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
+  color: rgb(7, 206, 0);
   margin-bottom: 20px;
-  margin-top: 0;
-  text-shadow:
-  0 0 30px rgba(21, 255, 0, 0.63);
 }
 
 .intro-text p {
@@ -807,10 +805,6 @@ html, body {
   transition: transform 0.5s ease-out;
 }
 
-#curiosities h2 {
-  text-shadow:
-  0 0 30px rgba(21, 255, 0, 0.63);
-}
 
 #curiosities .slideshow:hover img {
   transform: scale(1.05);
