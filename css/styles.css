@@ -353,7 +353,7 @@ html, body {
 
 /* CHARACTERS */
 #personajes {
-  margin: 100px auto;
+  margin: 140px auto;
   padding: 0 40px;
   max-width: 1400px;
 }
@@ -584,7 +584,7 @@ html, body {
 /* EPIOSODES */
 #episodes-section {
   font-family: "madcap", sans-serif;
-  margin: 100px auto;
+  margin: 140px auto;
   padding: 0 40px;
   max-width: 1400px;
 }
@@ -738,18 +738,24 @@ html, body {
 
 
 .curiosities-title {
-  margin-top: 120px;  
-  margin-bottom: 100px;
+  margin: 140px auto;
+  padding: 0 40px;
+  max-width: 1400px;
   text-align: center;
-  padding: 0 20px;
 }
 
 .curiosities-title h1 {
   font-family: "madcap", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-  letter-spacing: 1px;
-  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.curiosities-title p {
+  font-family: "poppins", sans-serif;
+  margin-bottom: -20px;
+  opacity: 0.8;
+  text-align: center;
 }
 
 
