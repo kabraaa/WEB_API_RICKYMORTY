@@ -823,7 +823,7 @@ GRID
 .curiosities-wrapper {
   display: flex;
   align-items: flex-start;
-  padding: 75px 40px;
+  padding: 90px 40px;
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
