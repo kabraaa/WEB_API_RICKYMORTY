@@ -251,7 +251,8 @@ html, body {
 
 .intro-block {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Alinea texto y imagen por la parte superior */
+  gap: 20px; /* espacio entre texto e imagen */
   gap: 60px;
   max-width: 1200px;
   margin: 0 auto;
@@ -270,6 +271,7 @@ html, body {
   font-size: 1.8rem;
   color: rgb(7, 206, 0);
   margin-bottom: 20px;
+  margin-top: 0px;
 }
 
 .intro-text p {
