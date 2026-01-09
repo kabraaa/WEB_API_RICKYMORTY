@@ -421,6 +421,54 @@ html, body {
   opacity: 1;
 }
 
+/* ===============================
+   SEARCH DROPDOWN – CHARACTERS
+   (mismo estilo que episodios)
+=============================== */
+
+#personajes .search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  max-height: 400px;
+  overflow-y: auto;
+
+  padding: 0;
+  margin-top: 4px;
+
+  z-index: 1000;
+  display: none;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#personajes .search-option {
+  font-family: "poppins", sans-serif;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: normal;
+
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#personajes .search-option:hover {
+  background-color: #00c853;
+  color: #fff;
+  font-weight: 500;
+}
+
+
+
 
 
 

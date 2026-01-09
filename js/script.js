@@ -55,6 +55,9 @@ document.querySelectorAll("[data-slider]").forEach(slider => {
 // CHARACTERS
 // CHARACTERS
 const contenedor = document.getElementById("lista-personajes");
+const customCharacterImages = {
+  "Antenna Rick": "media/antenna-rick.webp",
+};
 
 let personajesCargados = 0;
 let pagina = 1;
@@ -74,9 +77,10 @@ function cargarPersonajes() {
         div.dataset.id = personaje.id;
 
         div.innerHTML = `
-          <img src="${personaje.image}" alt="${personaje.name}">
-          <div class="nombre">${personaje.name}</div>
-        `;
+  <img src="${customCharacterImages[personaje.name] || personaje.image}" alt="${personaje.name}">
+  <div class="nombre">${personaje.name}</div>
+`;
+
 
         contenedor.appendChild(div);
         personajesCargados++;
@@ -91,6 +95,169 @@ function cargarPersonajes() {
 }
 
 cargarPersonajes();
+
+
+
+// ===============================
+// BÚSQUEDA DE PERSONAJES (AISLADA)
+// ===============================
+(function () {
+
+  const section = document.querySelector("#personajes");
+  if (!section) return;
+
+  const searchContainer = section.querySelector(".search-container");
+  const input = searchContainer.querySelector("#character-search");
+  const button = searchContainer.querySelector("button");
+  const container = document.getElementById("lista-personajes");
+
+  if (!input || !button || !container) return;
+
+  let characters = [];
+
+  // Detectar cuando se cargan personajes dinámicamente
+  const observer = new MutationObserver(() => {
+    characters = Array.from(container.querySelectorAll(".personaje"));
+  });
+
+  observer.observe(container, { childList: true });
+
+  function searchCharacters() {
+    const query = input.value.toLowerCase().trim();
+
+    characters.forEach(card => {
+      const name = card.querySelector(".nombre").textContent.toLowerCase();
+      card.style.display = name.includes(query) ? "block" : "none";
+    });
+  }
+
+  // Click en botón
+  button.addEventListener("click", searchCharacters);
+
+  // Enter
+  input.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") searchCharacters();
+  });
+
+  // Tiempo real
+  input.addEventListener("input", searchCharacters);
+
+})();
+
+// ===============================
+// DROPDOWN BÚSQUEDA PERSONAJES
+// ===============================
+(function () {
+
+  const section = document.querySelector("#personajes");
+  if (!section) return;
+
+  const searchContainer = section.querySelector(".search-container");
+  const input = searchContainer.querySelector("#character-search");
+  const container = document.getElementById("lista-personajes");
+
+  if (!input || !container) return;
+
+  // Crear dropdown
+  const searchResults = document.createElement("div");
+  searchResults.classList.add("search-results");
+  searchResults.style.position = "absolute";
+  searchResults.style.top = "100%";
+  searchResults.style.left = "0";
+  searchResults.style.right = "0";
+  searchResults.style.zIndex = "20";
+  searchResults.style.display = "none";
+
+  searchContainer.style.position = "relative";
+  searchContainer.appendChild(searchResults);
+
+  let characters = [];
+
+  // Actualizar lista cuando se cargan personajes
+  const observer = new MutationObserver(() => {
+    characters = Array.from(container.querySelectorAll(".personaje"));
+  });
+
+  observer.observe(container, { childList: true });
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase().trim();
+    searchResults.innerHTML = "";
+
+    if (query === "") {
+      searchResults.style.display = "none";
+      return;
+    }
+
+    const filtered = characters.filter(card => {
+      const name = card.querySelector(".nombre").textContent.toLowerCase();
+      return name.includes(query);
+    });
+
+    if (filtered.length === 0) {
+      searchResults.style.display = "none";
+      return;
+    }
+
+    filtered.forEach(card => {
+      const name = card.querySelector(".nombre").textContent;
+
+      const option = document.createElement("div");
+      option.classList.add("search-option");
+      option.textContent = name;
+
+      option.addEventListener("click", () => {
+  // Rellenar input
+  input.value = name;
+
+  // Filtrar personajes
+  characters.forEach(c => {
+    c.style.display = c === card ? "block" : "none";
+  });
+
+  searchResults.style.display = "none";
+
+  // 🔁 Botón para volver a todos los personajes
+  const backBtn = document.createElement("button");
+  backBtn.textContent = "Volver a todos los personajes";
+  backBtn.style.marginTop = "50px";
+  backBtn.style.padding = "10px 30px";
+  backBtn.style.backgroundColor = "rgb(7, 206, 0)";
+  backBtn.style.color = "#fff";
+  backBtn.style.border = "none";
+  backBtn.style.borderRadius = "6px";
+  backBtn.style.cursor = "pointer";
+
+  backBtn.addEventListener("click", () => {
+    // Mostrar todos los personajes
+    characters.forEach(c => c.style.display = "block");
+    input.value = "";
+    backBtn.remove();
+  });
+
+  container.parentElement.appendChild(backBtn);
+});
+
+
+      searchResults.appendChild(option);
+    });
+
+    searchResults.style.display = "block";
+  });
+
+  // Cerrar dropdown al hacer click fuera
+  document.addEventListener("click", (e) => {
+    if (!searchContainer.contains(e.target)) {
+      searchResults.style.display = "none";
+    }
+  });
+})();
+
+
+
+
+
+
 
 
 // ===============================
@@ -121,7 +288,7 @@ if (modalOverlay) {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
       .then(res => res.json())
       .then(p => {
-        modalImg.src = p.image;
+        modalImg.src = customCharacterImages[p.name] || p.image;
         modalName.textContent = p.name;
         modalId.textContent = p.id;
         modalStatus.textContent = p.status;
@@ -474,9 +641,6 @@ document.addEventListener("click", (e) => {
     searchResults.style.display = "none";
   }
 });
-
-
-
 
   // ===============================
   // INICIAR
