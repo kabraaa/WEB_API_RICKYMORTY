@@ -99,7 +99,7 @@ html, body {
 
 .navbar a:hover {
   transform: scale(1.2);
-  color: rgb(0, 158, 0);
+  color: rgb(7, 206, 0);
   font-weight: bold;
 }
 
@@ -245,7 +245,7 @@ html, body {
   font-size: clamp(3rem, 8vw, 7rem);
   color: white;
   text-shadow:
-  0 0 10px rgb(17, 204, 0),
+  0 0 10px rgb(7, 206, 0),
   0 0 30px rgba(0, 255, 156, 0.4);
 }
 
@@ -269,7 +269,7 @@ html, body {
 
 .intro-text h2 {
   font-size: 1.8rem;
-  color: rgb(7, 206, 0);
+  color: rgb(7, 206, 0); 
   margin-bottom: 20px;
   margin-top: 0px;
 }
@@ -316,7 +316,7 @@ html, body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(9, 255, 0, 0.5);
+  background: rgb(7, 206, 0);
   color: white;
   border: none;
   font-size: 1rem;
@@ -335,7 +335,7 @@ html, body {
 }
 
 .arrow:hover {
-  background: rgb(9, 225, 0);
+  background: rgb(7, 206, 0);
 }
 
 @media (max-width: 1000px) {
@@ -466,7 +466,7 @@ html, body {
 }
 
 #personajes .search-option:hover {
-  background-color: #00c853;
+  background-color: rgb(7, 206, 0);
   color: #fff;
   font-weight: 500;
 }
@@ -686,8 +686,8 @@ html, body {
 }
 
 .search-container button:hover {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #00c853;
+  border-color: #00c853;
 }
 
 
@@ -809,8 +809,8 @@ html, body {
 }
 
 .search-option:hover {
-  background-color: #00c853; /* Hover verde */
-  color: #fff; /* Texto blanco al pasar el mouse */
+  background-color: #00c853;
+  color: #fff;
   font-weight: 500;
 }
 
